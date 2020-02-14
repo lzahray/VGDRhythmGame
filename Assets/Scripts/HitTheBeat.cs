@@ -51,8 +51,10 @@ public class HitTheBeat : MonoBehaviour
                     {
                         characterScript.MoveCharacter(timeGuy.arrow);
                         canStillHitArrow = false; //already hit the arrow, we're good for this window (no bonus points for multi hits!!)
-                        Debug.Log("Correct!");
+                        Debug.Log("Correct! "+conductorScript.songPosition);
                         hitCorrectArrow = true;
+                        //Debug.Log("time diff: " + ((float)conductorScript.songPosition - (float)((timeGuy.end_time+timeGuy.start_time)/2)));
+                        
                     } 
                     else if (canStillHitArrow == true)
                     {
@@ -67,14 +69,15 @@ public class HitTheBeat : MonoBehaviour
                 {
                     //key input but not in key window, need to be confused 
                     characterScript.MoveCharacter("confused");
-                    Debug.Log("Wrong time to hit! " + conductorScript.songPosition);
+                    Debug.Log("Wrong time! " + conductorScript.songPosition);
+
                 }
             
             }
 
             if(Input.GetKeyUp(entry.Value))
                 {
-                    Debug.Log("key up");
+                    //Debug.Log("key up");
                     characterScript.MoveCharacter("center");
                 }
         }
@@ -85,6 +88,7 @@ public class HitTheBeat : MonoBehaviour
         {
             //Debug.Log("songPosition"+conductorScript.songPosition+"end_time"+timeGuy.end_time);
             timeGuy = characterScript.getNextTimesAndArrows();
+            Debug.Log("next: "+timeGuy.start_time + " " + timeGuy.end_time);
             hitCorrectArrow = false;
             canStillHitArrow = true;
         }

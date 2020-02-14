@@ -33,7 +33,7 @@ public class BossDance : MonoBehaviour
         {
 			timeGuy = bossScript.getNextTimesAndArrows();
 			bossScript.MoveCharacter("center");
-			Debug.Log("done with this move, next is " + timeGuy.start_time + " " + timeGuy.end_time + " " + timeGuy.arrow);
+			//Debug.Log("done with this move, next is " + timeGuy.start_time + " " + timeGuy.end_time + " " + timeGuy.arrow);
             hitCenterMove = true;
             hitDanceMove = false;
 		  
@@ -42,7 +42,7 @@ public class BossDance : MonoBehaviour
 		else if ((conductorScript.songPosition > timeGuy.start_time) &&(conductorScript.songPosition < timeGuy.end_time) && (hitDanceMove == false))
         {
 			bossScript.MoveCharacter(timeGuy.arrow);
-			Debug.Log("time to move to "+timeGuy.arrow);
+			//Debug.Log("time to move to "+timeGuy.arrow);
             hitDanceMove = true;
             hitCenterMove = false;
         }

@@ -33,9 +33,6 @@ public class Conductor : MonoBehaviour
     void Awake()
     {
         started = false;
-    }
-    void Start()
-    {
         //Load the AudioSource attached to the Conductor GameObject
         musicSource = GetComponent<AudioSource>();
 
@@ -43,11 +40,20 @@ public class Conductor : MonoBehaviour
         secPerBeat = 60f / songBpm;
 
         //Record the time when the music starts
+        
+        
+        songPosition = 0;
+        songPositionInBeats = 0;
+
+    }
+    void Start()
+    {
+        
+        //Start the music
+        musicSource.Play();
         dspSongTime = (float)AudioSettings.dspTime;
         songStartTime = (float)AudioSettings.dspTime;
 
-        //Start the music
-        musicSource.Play();
         started = true;
 
         songPosition = (float)(AudioSettings.dspTime - dspSongTime);
@@ -62,7 +68,6 @@ public class Conductor : MonoBehaviour
     void Update()
     {
         
-
     }
 
     void OnAudioFilterRead(float[] data, int channels)

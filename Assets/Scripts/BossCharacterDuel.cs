@@ -10,7 +10,8 @@ public class BossCharacterDuel : MonoBehaviour
 	public string info_path;
 
 	private int next_time_index;
-	private List<double> times;
+	private List<double> start_times;
+	private List<double> end_times;
 	private List<string> arrows;
 	private SpriteRenderer theSR;
 	private Dictionary<string, Sprite> direction_to_sprite;
@@ -18,7 +19,8 @@ public class BossCharacterDuel : MonoBehaviour
 
 	void Awake()
 	{
-		times = new List<double> {};
+		start_times = new List<double> {};
+		end_times = new List<double> {};
 		arrows = new List<string> {};
 		direction_to_sprite = new Dictionary<string, Sprite> {}; 
 		next_time_index = 0; 
@@ -28,7 +30,8 @@ public class BossCharacterDuel : MonoBehaviour
             var line = inp_stm.ReadLine();
             var values = line.Split(',');
 
-            times.Add(Convert.ToDouble(values[0]));
+            start_times.Add(Convert.ToDouble(values[0]));
+            end_times.Add(Convert.ToDouble(values[1]));
             arrows.Add(values[2]);
         }
 
@@ -49,8 +52,8 @@ public class BossCharacterDuel : MonoBehaviour
 
 	public TimeArrowInfo getNextTimesAndArrows()
 	{
-		TimeArrowInfo to_return = new TimeArrowInfo(times[next_time_index], times[next_time_index]+.15, arrows[next_time_index]);
-		if (next_time_index < (times.Count-1))
+		TimeArrowInfo to_return = new TimeArrowInfo(start_times[next_time_index], end_times[next_time_index], arrows[next_time_index]);
+		if (next_time_index < (start_times.Count-1))
 		{
 			next_time_index++;
 		}
