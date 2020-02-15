@@ -35,20 +35,32 @@ public class spotlightOnOff : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (conductor.songPositionInBeats >= nextBeat-.1) //a little early
+        if (!conductor.musicSource.isPlaying)
+            {
+                if (!nextIsOn)
+                {
+                    changeLightIntensity(offIntensity);
+                }
+                nextIsOn = true;
+            }
+        else
         {
-        	//time to start
-        	if (nextIsOn)
-        	{
-        		changeLightIntensity(onIntensity);
-        	}
-        	else
-        	{
-        		changeLightIntensity(offIntensity);
-        	}
-        	nextBeat += beatsPerCharacter;
-        	nextIsOn = !nextIsOn;
+            if (conductor.songPositionInBeats >= nextBeat-.1) //a little early
+            {
+                //time to start
+                if (nextIsOn)
+                {
+                    changeLightIntensity(onIntensity);
+                }
+                else
+                {
+                    changeLightIntensity(offIntensity);
+                }
+                nextBeat += beatsPerCharacter;
+                nextIsOn = !nextIsOn;
+            }
         }
+        
     }
 
     public void changeLightIntensity(float intensity)
