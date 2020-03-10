@@ -22,11 +22,11 @@ public class ButtonParticle : MonoBehaviour
 	{
 		if (hitValue=="wrong" | hitValue =="miss")
 		{
-			hitValue_to_particle_system[hitValue].Emit(20);
+			hitValue_to_particle_system[hitValue].Emit(10);
 		}
 		else
 		{
-			hitValue_to_particle_system[hitValue].Emit(30);
+			hitValue_to_particle_system[hitValue].Emit(20);
 		}
 	}
 }

@@ -65,11 +65,11 @@ public class MainCharacterDuel : MonoBehaviour
 	{
 		if (hitValue=="wrong" | hitValue =="miss")
 		{
-			hitValue_to_particle_system[hitValue].Emit(20);
+			hitValue_to_particle_system[hitValue].Emit(15);
 		}
 		else
 		{
-			hitValue_to_particle_system[hitValue].Emit(30);
+			hitValue_to_particle_system[hitValue].Emit(25);
 		}
 	}
 	// IEnumerator emitParticles()

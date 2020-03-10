@@ -18,7 +18,7 @@ public class ArrowManager
 
     // Start is called before the first frame update
 
-	public ArrowManager(string arrowInfo, Conductor conductor)
+	public ArrowManager(string arrowInfo, Conductor conductor, double lagTimeOffset)
 	{
 		//instantiate allArrows
 
@@ -33,7 +33,7 @@ public class ArrowManager
 		foreach (var line in result)
 		{
 			var values = line.Split(new [] {','});
-			double center = Convert.ToDouble(values[0]);
+			double center = Convert.ToDouble(values[0]) + lagTimeOffset;
 			allArrows.Add(new TimeArrowInfo(center, center-thresholdGood, center+thresholdGood, values[1]));
 		}
 		//Debug.Log("allArrows.Count"+allArrows.Count);

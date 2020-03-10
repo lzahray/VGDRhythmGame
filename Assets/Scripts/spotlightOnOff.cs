@@ -17,7 +17,7 @@ public class spotlightOnOff : MonoBehaviour
     private int nextBeat; 
     private bool nextIsOn;
 
-    void Start()
+    void Awake()
     {
         light = GetComponent<Light>();
         nextBeat = songStartBeat;
